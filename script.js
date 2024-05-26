@@ -164,6 +164,7 @@ function generarPalabraOculta(palabra) {
     calcularPuntaje();
     const nombreJugador = document.getElementById("nombre-jugador").value;
     agregarJugador(nombreJugador, puntaje, 1);
+    incrementarVictorias(nombreJugador);
     mostrarTablaPuntajes();
   }
   
@@ -228,13 +229,24 @@ function generarPalabraOculta(palabra) {
     }
 
     if (jugadorExistente) {
-      jugadorExistente.puntaje = puntaje;
-      jugadorExistente.victorias = victorias;
+      jugadorExistente.puntaje += puntaje;
+      jugadorExistente.victorias += victorias;
     } else {
       jugadores.push({ nombre, puntaje, victorias });
     }
   
     actualizarTablaPuntajes();
+  }
+
+  /**
+   * Si el jugador se encuentra en la tabla se aumenta el número de victorias
+   */
+  function incrementarVictorias(nombre) {
+    const jugadorExistente = jugadores.find(jugador => jugador.nombre === nombre);
+  
+    if (jugadorExistente) {
+      jugadorExistente.victorias += 1;
+    }
   }
 
   /**
@@ -250,7 +262,7 @@ function generarPalabraOculta(palabra) {
       const fila = document.createElement("tr");
   
       const columnaNombre = document.createElement("td");
-      columnaNombre.textContent = (indice + 1); // Nombre genérico
+      columnaNombre.textContent = jugador.nombre;
       fila.appendChild(columnaNombre);
   
       const columnaPuntaje = document.createElement("td");
