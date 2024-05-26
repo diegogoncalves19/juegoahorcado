@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahorcado</title>
+    <title>Juego del Ahorcado</title>
     <link rel="stylesheet" href="./styles.css" /> 
 </head>
 <body>
    <section>
-    <h1> No Te Ahorques </h1>
-    <p> Estas son las instrucciones</p>
+    <h1> ¡No Te Ahorques! </h1>
+    <p> Estas son las instrucciones: </p>
+    <r> El jugador tendrá que escribir letras para adivinar la palabra oculta. </r>
+    
     <div>
         <input
           id="input-mensaje"
@@ -19,6 +21,47 @@
         />
         <button id="insertar">Insertar</button>
     </div>
+
+    <p id="error-message" class="hidden"></p>
+
+    <div id="word-container">
+      <p id="hidden-word"></p>
+    </div>
+
+    <div id="hangman-images" class="hangman-images">
+      <img src="img/hangman_0.png" alt="Hangman Image" id="hangman-image" />
+    </div>
+
+    <p id="error-message" class="hidden"></p>
+
+    <div id="game-result" class="hidden">
+      <p id="game-result-message"></p>
+      <button id="reiniciar">Reiniciar</button>
+    </div>
+
+    <div id="game-status">
+      <p>Letras utilizadas: <span id="letras-utilizadas"></span></p>
+      <p>Turnos: <span id="turnos"></span></p>
+      <p>Puntaje: <span id="puntaje"></span></p>
+    </div>
+
+    <input type="text" id="nombre-jugador" placeholder="Ingrese su nombre">
+
+    <table id="score-table" class="centered-table">
+      <thead>
+        <tr>
+          <th>Jugador</th>
+          <th>Puntaje</th>
+          <th>Victorias</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      </tbody>
+    </table>
+
+ 
+    
    </section>
 
    <script src="./script.js"></script>
